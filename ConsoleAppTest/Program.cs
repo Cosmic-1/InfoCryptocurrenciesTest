@@ -1,2 +1,28 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using CoincapLibrary;
+
+
+var assets = new AssetsPrice();
+var assetsData = await assets.GetCryptocurrenciesAsync();
+var assetsData1 = await assets.GetCryptocurrencyAsync("bitcoin");
+var assetsData2 = await assets.GetCryptocurrencyMarketsAsync("bitcoin");
+var assetsData3 = await assets.GetCryptocurrencyHistoryAsync("bitcoin", TimeInterval.OneDay);
+
+var cryptocurrencyExchanges = new CryptocurrencyExchanges();
+var cryptocurrencyExchangesData = await cryptocurrencyExchanges.GetExchangesAsync();
+var cryptocurrencyExchangesData1 = await cryptocurrencyExchanges.GetSingleExchangeAsync("binance");
+
+var filterMarket = new FilterMarkets();
+var filterMarketData = await filterMarket.GetMarketsAsync(
+    exchangeId:"binance", 
+    baseSymbol: "BTC", 
+    baseId: "bitcoin", 
+    assetSymbol: "BTC", 
+    assetId: "bitcoin", 
+    limit: 100, 
+    offset:0);
+
+var moneyRates = new MoneyRates();
+var moneyRatesData = await moneyRates.GetMoneyAsync();
+var moneyRatesData1 = await moneyRates.GetSingleMoneyAsync("turkmenistani-manat");
+
+Console.WriteLine();
