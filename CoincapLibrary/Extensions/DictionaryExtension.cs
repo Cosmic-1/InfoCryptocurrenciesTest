@@ -2,7 +2,7 @@
 
 namespace CoincapLibrary.Extensions
 {
-    public static class DictionaryExtension
+    internal static class DictionaryExtension
     {
         public static string? GenerateUriQueries<Key, Value>(this Dictionary<Key, Value> uriQueries) where Key : class where Value : class
         {

@@ -13,14 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace InfoCryptocurrenciesTEST.Views.Pages
+namespace InfoCryptocurrenciesTEST.Views
 {
     /// <summary>
-    /// Interaction logic for Top.xaml
+    /// Interaction logic for AllMoney.xaml
     /// </summary>
-    public partial class Top : Page
+    public partial class AllMoney : Page
     {
-        public Top()
+        public AllMoneyViewModel AllMoneyViewModel { get; private set; } = new();
+        public AllMoney()
         {
             InitializeComponent();
         }

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace InfoCryptocurrenciesTEST.Views
+namespace InfoCryptocurrenciesTEST
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,6 +23,21 @@ namespace InfoCryptocurrenciesTEST.Views
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void TopMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Navigation.Source = new Uri("./Views/Top.xaml", UriKind.Relative);
+        }
+
+        private void MoneyMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Navigation.Source = new Uri("./Views/AllMoney.xaml", UriKind.Relative);
+        }
+
+        private void ExchangesMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Navigation.Source = new Uri("./Views/Exchanges.xaml", UriKind.Relative);
         }
     }
 }

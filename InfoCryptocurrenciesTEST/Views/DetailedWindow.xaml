@@ -1,0 +1,48 @@
+﻿<Window x:Class="InfoCryptocurrenciesTEST.Views.DetailedWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InfoCryptocurrenciesTEST.Views"
+        xmlns:viewmodels="clr-namespace:InfoCryptocurrenciesTEST.ViewModels"
+        mc:Ignorable="d"
+        x:Name="detailedCryptocurrency"
+        Title="DetailedCryptocurrencyWindow" 
+        Height="450" Width="800">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <Label Content="{Binding ElementName=detailedCryptocurrency, Path=DetailedCryptocurrencyViewModel.DetailedCryptocurrecy.ID}" />
+                <Label Content="{Binding ElementName=detailedCryptocurrency, Path=DetailedCryptocurrencyViewModel.DetailedCryptocurrecy.Name}" />
+                <Label Content="{Binding ElementName=detailedCryptocurrency, Path=DetailedCryptocurrencyViewModel.DetailedCryptocurrecy.Symbol}" />
+                <Label Content="{Binding ElementName=detailedCryptocurrency, Path=DetailedCryptocurrencyViewModel.DetailedCryptocurrecy.Price}" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="1">
+                <Label Content="{Binding ElementName=detailedCryptocurrency, Path=DetailedCryptocurrencyViewModel.DetailedCryptocurrecy.MarketCap}" />
+                <Label Content="{Binding ElementName=detailedCryptocurrency, Path=DetailedCryptocurrencyViewModel.DetailedCryptocurrecy.Volume24Hours}" />
+                <Label Content="{Binding ElementName=detailedCryptocurrency, Path=DetailedCryptocurrencyViewModel.DetailedCryptocurrecy.Rank}" />
+                <Label Content="{Binding ElementName=detailedCryptocurrency, Path=DetailedCryptocurrencyViewModel.DetailedCryptocurrecy.Explorer}" />
+            </StackPanel>
+        </Grid>
+        <DataGrid Grid.Row="1" 
+                   IsReadOnly="True"
+                  ItemsSource="{Binding ElementName=detailedCryptocurrency, Path=DetailedCryptocurrencyViewModel.DetailedCryptocurrecy.Exchanges}">
+        </DataGrid>
+
+        <DataGrid Grid.Row="2" 
+                  IsReadOnly="True"
+                  ItemsSource="{Binding ElementName=detailedCryptocurrency, Path=DetailedCryptocurrencyViewModel.DetailedCryptocurrecy.Histories}">
+        </DataGrid>
+    </Grid>
+</Window>

@@ -1,14 +1,15 @@
-﻿<Page x:Class="InfoCryptocurrenciesTEST.Views.Pages.Top"
+﻿<Page x:Class="InfoCryptocurrenciesTEST.Views.Exchanges"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:InfoCryptocurrenciesTEST.Views.Pages"
+      xmlns:local="clr-namespace:InfoCryptocurrenciesTEST.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Top">
+      x:Name="exchanges"
+      Title="Exchanges">
 
     <Grid>
-        <Label>Text</Label>
+        <DataGrid ItemsSource="{Binding ElementName=exchanges, Path=ExchangesViewModel.Exchanges}" />
     </Grid>
 </Page>

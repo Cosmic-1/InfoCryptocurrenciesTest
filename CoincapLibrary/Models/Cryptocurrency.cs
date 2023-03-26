@@ -44,12 +44,12 @@
         /// quantity of trading volume represented in USD over the last 24 hours
         /// </summary>
         [JsonPropertyName("volumeUsd24Hr")]
-        public string? VolumeUsd24Hr { get; }
+        public string? VolumeUsd24Hr { get; set; }
         /// <summary>
         /// volume-weighted price based on real-time market data, translated to USD
         /// </summary>
         [JsonPropertyName("priceUsd")]
-        public string? PriceUsd { get; }
+        public string? PriceUsd { get; set; }
         /// <summary>
         /// the direction and value change in the last 24 hours
         /// </summary>
