@@ -19,11 +19,11 @@ namespace InfoCryptocurrenciesTEST.Views
     /// </summary>
     public partial class DetailedWindow : Window
     {
-        public DetailedViewModel? DetailedCryptocurrencyViewModel { get; }
+        public DetailedViewModel? DetailedCryptocurrencyViewModel { get; } = new();
 
         public DetailedWindow(string cryptocurrencyId)
         {
-            DetailedCryptocurrencyViewModel = new();
+            DataContext = DetailedCryptocurrencyViewModel;
             DetailedCryptocurrencyViewModel.Update(cryptocurrencyId);
 
             InitializeComponent();

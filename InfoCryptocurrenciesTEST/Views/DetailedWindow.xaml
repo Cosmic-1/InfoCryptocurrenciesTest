@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:InfoCryptocurrenciesTEST.Views"
         xmlns:viewmodels="clr-namespace:InfoCryptocurrenciesTEST.ViewModels"
         mc:Ignorable="d"
-        x:Name="detailedCryptocurrency"
         Title="DetailedCryptocurrencyWindow" 
         Height="450" Width="800">
 
@@ -22,27 +21,27 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0">
-                <Label Content="{Binding ElementName=detailedCryptocurrency, Path=DetailedCryptocurrencyViewModel.DetailedCryptocurrecy.ID}" />
-                <Label Content="{Binding ElementName=detailedCryptocurrency, Path=DetailedCryptocurrencyViewModel.DetailedCryptocurrecy.Name}" />
-                <Label Content="{Binding ElementName=detailedCryptocurrency, Path=DetailedCryptocurrencyViewModel.DetailedCryptocurrecy.Symbol}" />
-                <Label Content="{Binding ElementName=detailedCryptocurrency, Path=DetailedCryptocurrencyViewModel.DetailedCryptocurrecy.Price}" />
+                <Label Content="{Binding Path=DetailedCryptocurrecy.ID}" />
+                <Label Content="{Binding  Path=DetailedCryptocurrecy.Name}" />
+                <Label Content="{Binding  Path=DetailedCryptocurrecy.Symbol}" />
+                <Label Content="{Binding  Path=DetailedCryptocurrecy.Price}" />
             </StackPanel>
 
             <StackPanel Grid.Column="1">
-                <Label Content="{Binding ElementName=detailedCryptocurrency, Path=DetailedCryptocurrencyViewModel.DetailedCryptocurrecy.MarketCap}" />
-                <Label Content="{Binding ElementName=detailedCryptocurrency, Path=DetailedCryptocurrencyViewModel.DetailedCryptocurrecy.Volume24Hours}" />
-                <Label Content="{Binding ElementName=detailedCryptocurrency, Path=DetailedCryptocurrencyViewModel.DetailedCryptocurrecy.Rank}" />
-                <Label Content="{Binding ElementName=detailedCryptocurrency, Path=DetailedCryptocurrencyViewModel.DetailedCryptocurrecy.Explorer}" />
+                <Label Content="{Binding  Path=DetailedCryptocurrecy.MarketCap}" />
+                <Label Content="{Binding  Path=DetailedCryptocurrecy.Volume24Hours}" />
+                <Label Content="{Binding  Path=DetailedCryptocurrecy.Rank}" />
+                <Label Content="{Binding  Path=DetailedCryptocurrecy.Explorer}" />
             </StackPanel>
         </Grid>
         <DataGrid Grid.Row="1" 
                    IsReadOnly="True"
-                  ItemsSource="{Binding ElementName=detailedCryptocurrency, Path=DetailedCryptocurrencyViewModel.DetailedCryptocurrecy.Exchanges}">
+                  ItemsSource="{Binding  Path=DetailedCryptocurrecy.Exchanges}">
         </DataGrid>
 
         <DataGrid Grid.Row="2" 
                   IsReadOnly="True"
-                  ItemsSource="{Binding ElementName=detailedCryptocurrency, Path=DetailedCryptocurrencyViewModel.DetailedCryptocurrecy.Histories}">
+                  ItemsSource="{Binding  Path=DetailedCryptocurrecy.Histories}">
         </DataGrid>
     </Grid>
 </Window>

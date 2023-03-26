@@ -23,6 +23,7 @@ namespace InfoCryptocurrenciesTEST.Views
         public ExchangesViewModel ExchangesViewModel { get; } = new();
         public Exchanges()
         {
+            DataContext = ExchangesViewModel;
             InitializeComponent();
         }
     }

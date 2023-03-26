@@ -23,6 +23,7 @@ namespace InfoCryptocurrenciesTEST.Views
         public AllMoneyViewModel AllMoneyViewModel { get; private set; } = new();
         public AllMoney()
         {
+            DataContext = AllMoneyViewModel;
             InitializeComponent();
         }
     }

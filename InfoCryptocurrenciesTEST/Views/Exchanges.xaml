@@ -6,10 +6,10 @@
       xmlns:local="clr-namespace:InfoCryptocurrenciesTEST.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      x:Name="exchanges"
       Title="Exchanges">
 
     <Grid>
-        <DataGrid ItemsSource="{Binding ElementName=exchanges, Path=ExchangesViewModel.Exchanges}" />
+        <DataGrid IsReadOnly="True"
+                  ItemsSource="{Binding Path=Exchanges}" />
     </Grid>
 </Page>

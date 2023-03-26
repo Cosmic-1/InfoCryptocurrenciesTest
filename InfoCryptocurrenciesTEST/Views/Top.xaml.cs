@@ -24,6 +24,7 @@ namespace InfoCryptocurrenciesTEST.Views
         public TopViewModel CryptocurrenciesViewModel { get; private set; } = new();
         public Top()
         {
+            DataContext = CryptocurrenciesViewModel;
             InitializeComponent();
         }
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

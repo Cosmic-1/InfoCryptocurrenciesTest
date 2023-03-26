@@ -6,7 +6,6 @@
       xmlns:local="clr-namespace:InfoCryptocurrenciesTEST.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Name="topPage"
       Title="Top">
 
     <Grid>
@@ -23,13 +22,13 @@
             <StackPanel Orientation="Horizontal" 
                         Grid.Column="0" 
                         HorizontalAlignment="Left">
-                <Button Command="{Binding ElementName=topPage, Path=CryptocurrenciesViewModel.UpdateDataCommand}" 
+                <Button Command="{Binding Path=UpdateDataCommand}" 
                         CommandParameter="10">Top-10</Button>
-                <Button Command="{Binding ElementName=topPage, Path=CryptocurrenciesViewModel.UpdateDataCommand}" 
+                <Button Command="{Binding Path=UpdateDataCommand}" 
                         CommandParameter="20">Top-20</Button>
-                <Button Command="{Binding ElementName=topPage, Path=CryptocurrenciesViewModel.UpdateDataCommand}" 
+                <Button Command="{Binding Path=UpdateDataCommand}" 
                         CommandParameter="100">Top-100</Button>
-                <Button Command="{Binding ElementName=topPage, Path=CryptocurrenciesViewModel.UpdateDataCommand}">All</Button>
+                <Button Command="{Binding Path=UpdateDataCommand}">All</Button>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" 
@@ -39,12 +38,12 @@
                          Name="searchBox"/>
                 <Button Width="80" 
                         Content="Search"
-                        Command="{Binding ElementName=topPage, Path=CryptocurrenciesViewModel.SearchCommand}"
+                        Command="{Binding Path=SearchCommand}"
                         CommandParameter="{Binding ElementName=searchBox, Path=Text}"/>
             </StackPanel>
         </Grid>
 
-        <DataGrid ItemsSource="{Binding ElementName=topPage, Path=CryptocurrenciesViewModel.Cryptocurrencies}"
+        <DataGrid ItemsSource="{Binding Path=Cryptocurrencies}"
                   Grid.Row="1"
                   IsReadOnly="True"
                   AutoGenerateColumns="False" 
