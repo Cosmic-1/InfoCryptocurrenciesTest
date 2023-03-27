@@ -23,7 +23,7 @@ namespace CoincapLibrary
             { TimeInterval.TwelveHours, "h12"},
             { TimeInterval.OneDay, "d1"}
         };
-        protected override string UriBase { get; } = "https://api.coincap.io/v2/assets";
+        protected override string UriBase { get; set; } = "https://api.coincap.io/v2/assets";
 
         /// <summary>
         /// 
@@ -40,12 +40,13 @@ namespace CoincapLibrary
             int? offset = null)
         {
             var uriQueries = new Dictionary<string, string>() {
+#nullable disable
                 { nameof(search), search},
                 { nameof(ids), ids},
                 { nameof(limit), ConvertStructToString(limit)},
                 { nameof(offset), ConvertStructToString(offset)}
+#nullable enable
             };
-
             var uriBuilder = new UriBuilder(UriBase);
             uriBuilder.Query = uriQueries.GenerateUriQueries();
 
@@ -54,7 +55,7 @@ namespace CoincapLibrary
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="name">asset id (bitcoin)</param>
+        /// <param name="cryptocurrencyId">asset id (bitcoin)</param>
         /// <returns></returns>
 
         public async Task<Cryptocurrency?> GetCryptocurrencyAsync(string cryptocurrencyId)
@@ -67,7 +68,7 @@ namespace CoincapLibrary
         /// <summary>
         /// Interval: m1, m5, m15, m30, h1, h2, h6, h12, d1
         /// </summary>
-        /// <param name="name">point-in-time interval. minute and hour intervals represent price at that time, the day interval represents average of 24 hour periods (timezone: UTC)</param>
+        /// <param name="cryptocurrencyId">point-in-time interval. minute and hour intervals represent price at that time, the day interval represents average of 24 hour periods (timezone: UTC)</param>
         /// <param name="interval">UNIX time in milliseconds. omitting will return the most recent asset history. If start is supplied, end is required and vice versa</param>
         /// <returns></returns>
         public async Task<CryptocurrencyHistory[]?> GetCryptocurrencyHistoryAsync(string cryptocurrencyId, TimeInterval interval)
@@ -81,7 +82,7 @@ namespace CoincapLibrary
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="name">asset id (bitcoin)</param>
+        /// <param name="cryptocurrencyId">asset id (bitcoin)</param>
         /// <param name="limit">max limit of 2000</param>
         /// <param name="offset">offset</param>
         /// <returns></returns>
@@ -91,10 +92,11 @@ namespace CoincapLibrary
             int? offset = null)
         {
             var uriQueries = new Dictionary<string, string>() {
+#nullable disable
                 { nameof(limit), ConvertStructToString(limit) },
                 { nameof(offset), ConvertStructToString(offset) }
+#nullable enable
             };
-
             var uriBuilder = new UriBuilder(UriBase);
             uriBuilder.Path += $"/{cryptocurrencyId}/markets";
             uriBuilder.Query = uriQueries.GenerateUriQueries();

@@ -7,7 +7,7 @@
     /// </summary>
     public class CryptocurrencyExchanges : CoincapBase
     {
-        protected override string UriBase => "https://api.coincap.io/v2/exchanges";
+        protected override string UriBase { get; set; } = "https://api.coincap.io/v2/exchanges";
 
         public async Task<Exchange[]?> GetExchangesAsync()
         {
@@ -16,7 +16,7 @@
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="name">	exchange id (binance)</param>
+        /// <param name="exchangeId">exchange id (binance)</param>
         /// <returns></returns>
         public async Task<Exchange?> GetSingleExchangeAsync(string exchangeId)
         {

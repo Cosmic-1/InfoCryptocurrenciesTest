@@ -9,7 +9,7 @@
     /// </summary>
     public class FilterMarkets : CoincapBase
     {
-        protected override string UriBase => "https://api.coincap.io/v2/markets";
+        protected override string UriBase { get; set; } = "https://api.coincap.io/v2/markets";
 
         /// <summary>
         /// 

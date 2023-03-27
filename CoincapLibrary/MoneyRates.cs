@@ -9,7 +9,7 @@ namespace CoincapLibrary
     /// </summary>
     public class MoneyRates : CoincapBase
     {
-        protected override string UriBase => "https://api.coincap.io/v2/rates";
+        protected override string UriBase { get; set; } = "https://api.coincap.io/v2/rates";
 
         /// <summary>
         /// 
@@ -22,7 +22,7 @@ namespace CoincapLibrary
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="name">asset id (bitcoin)</param>
+        /// <param name="moneyId">asset id (bitcoin)</param>
         /// <returns></returns>
         public async Task<Money?> GetSingleMoneyAsync(string moneyId)
         {

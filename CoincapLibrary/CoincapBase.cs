@@ -10,7 +10,7 @@
     /// </summary>
     public abstract class CoincapBase
     {
-        protected abstract string UriBase { get; }
+        protected abstract string UriBase { get; set; }
         protected virtual async Task<string?> RequestDataAsync(Uri uri)
         {
             using var httpClient = new HttpClient();
