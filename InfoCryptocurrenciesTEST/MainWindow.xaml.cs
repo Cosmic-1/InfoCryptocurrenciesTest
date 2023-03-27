@@ -30,9 +30,9 @@ namespace InfoCryptocurrenciesTEST
             Navigation.Source = new Uri("./Views/Top.xaml", UriKind.Relative);
         }
 
-        private void MoneyMenuItem_Click(object sender, RoutedEventArgs e)
+        private void ConvertMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            Navigation.Source = new Uri("./Views/AllMoney.xaml", UriKind.Relative);
+            Navigation.Source = new Uri("./Views/Convert.xaml", UriKind.Relative);
         }
 
         private void ExchangesMenuItem_Click(object sender, RoutedEventArgs e)

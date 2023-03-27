@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace InfoCryptocurrenciesTEST.Services
 {
-    public interface IAllMoney
+    public interface IConvertToMoney
     {
-        Task<IEnumerable<Money>?> GetAllMoneyAsync();
-        Task<Money?> GetMoneyAsync(string name);
+        Task<IEnumerable<Money>?> ConvertCryptocurrencyAsync(string cryptocurrencyId);
     }
 }

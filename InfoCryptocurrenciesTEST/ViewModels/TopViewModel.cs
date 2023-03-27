@@ -25,11 +25,12 @@ namespace InfoCryptocurrenciesTEST.ViewModels
 
         public TopViewModel()
         {
-            UpdateDataCommand = new UpdateDataCommand(Update);
+            UpdateDataCommand = new UpdateDataCommand(UpdateData);
             SearchCommand = new SearchCommand(SearchData);
 
             manager = new CoincapManager();
-            Update("10");
+
+            UpdateData("10");
         }
 
         public ICommand UpdateDataCommand { get; private set; }
@@ -50,25 +51,21 @@ namespace InfoCryptocurrenciesTEST.ViewModels
         {
             Dispatcher.CurrentDispatcher.Invoke(async () =>
             {
-                Cryptocurrencies = await manager.SearchAsync((string)parameter);
+                Cryptocurrencies = await manager.GetCryptocurrenciesAsync(cryptocurrencyName: parameter as string);
             });
         }
 
-        private void Update(object? parameter)
+        private void UpdateData(object? parameter)
         {
             Dispatcher.CurrentDispatcher.Invoke(async () =>
             {
-                var result = await manager.UpdateAsync();
-                if (result)
+                Cryptocurrencies = parameter switch
                 {
-                    Cryptocurrencies = parameter switch
-                    {
-                        "100" => manager.Top100(),
-                        "20" => manager.Top20(),
-                        "10" => manager.Top10(),
-                        _ => manager.AllCryptocurrencies(),
-                    };
-                }
+                    "100" => await manager.GetCryptocurrenciesAsync(limit: 100, offset: 0),
+                    "20" => await manager.GetCryptocurrenciesAsync(limit: 20, offset: 0),
+                    "10" => await manager.GetCryptocurrenciesAsync(limit: 10, offset: 0),
+                    _ => await manager.GetCryptocurrenciesAsync(limit: 1000, offset: 0),
+                };
             });
         }
     }

@@ -5,37 +5,16 @@ using System.Threading.Tasks;
 
 namespace InfoCryptocurrenciesTEST.Services.Coincap
 {
-    public class CoincapManager : ICryptocurrenciesRating, IDetailedCryptocurrency, IAllMoney, IExchange
+    public class CoincapManager : ICryptocurrenciesRating, IDetailedCryptocurrency, IConvertToMoney, IExchange
     {
         CoincapLibrary.AssetsPrice prices = new();
         CoincapLibrary.MoneyRates money = new();
         CoincapLibrary.CryptocurrencyExchanges exchanges = new();
 
-        IEnumerable<Cryptocurrency>? cryptocurrencies;
-
-        public IEnumerable<Cryptocurrency>? AllCryptocurrencies()
-            => cryptocurrencies;
-
-        public IEnumerable<Cryptocurrency>? Top10()
-            => cryptocurrencies?.Take(10);
-
-        public IEnumerable<Cryptocurrency>? Top20()
-        => cryptocurrencies?.Take(20);
-
-        public IEnumerable<Cryptocurrency>? Top100()
-        => cryptocurrencies?.Take(100);
-
-
-        public async Task<bool> UpdateAsync()
+        public async Task<IEnumerable<Cryptocurrency>?> GetCryptocurrenciesAsync(string? cryptocurrencyName = null, int? limit = null, int? offset = null)
         {
-            cryptocurrencies = await GetCryptocurrenciesAsync(1000, 0);
+            var data = await prices.GetCryptocurrenciesAsync(search: cryptocurrencyName, limit: limit, offset: offset);
 
-            return cryptocurrencies is not null;
-        }
-
-        public async Task<IEnumerable<Cryptocurrency>?> SearchAsync(string value)
-        {
-            var data = await prices.GetCryptocurrenciesAsync(search: value);
             return data?.Select(ConvertCoincapModel.ToCryptocurrency);
         }
 
@@ -49,25 +28,25 @@ namespace InfoCryptocurrenciesTEST.Services.Coincap
                 ? ConvertCoincapModel.ToDetailedCryptocurrency(coin, histories, markets)
                 : null;
         }
-        private async Task<IEnumerable<Cryptocurrency>?> GetCryptocurrenciesAsync(int limit, int offset)
+
+        public async Task<IEnumerable<Money>?> ConvertCryptocurrencyAsync(string cryptocurrencyId)
         {
-            var data = await prices.GetCryptocurrenciesAsync(limit: limit, offset: offset);
+            var crypto = await prices.GetCryptocurrencyAsync(cryptocurrencyId);
+            var moneyModels = await money.GetMoneyAsync();
 
-            return data?.Select(ConvertCoincapModel.ToCryptocurrency);
-        }
+            if (crypto is null || moneyModels is null)
+                return null;
 
-        public async Task<IEnumerable<Money>?> GetAllMoneyAsync()
-        {
-            var allMoney = await money.GetMoneyAsync();
+            var converted = moneyModels.Select((m) =>
+            {
+                var convertModel = ConvertCoincapModel.ToMoney(m);
 
-            return allMoney?.Select(ConvertCoincapModel.ToMoney);
-        }
+                convertModel.ConvertToUsd = Convert.ToDecimal(crypto.PriceUsd) / convertModel.ConvertToUsd;
 
-        public async Task<Money?> GetMoneyAsync(string name)
-        {
-            var moneyM = await money.GetSingleMoneyAsync(name);
+                return convertModel;
+            });
 
-            return moneyM is not null ? ConvertCoincapModel.ToMoney(moneyM) : null;
+            return converted;
         }
 
         public async Task<IEnumerable<Exchange>?> GetAllExchangesAsync()

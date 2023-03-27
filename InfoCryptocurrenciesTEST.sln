@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoincapLibrary", "CoincapLi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleAppTest", "ConsoleAppTest\ConsoleAppTest.csproj", "{4D4D646D-2118-46DB-A537-E8319D1B93CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCoincapLibrary", "TestCoincapLibrary\TestCoincapLibrary.csproj", "{EF1A4256-11D3-4FD6-A93D-5D3745CF1335}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestCoincapLibrary", "TestCoincapLibrary\TestCoincapLibrary.csproj", "{EF1A4256-11D3-4FD6-A93D-5D3745CF1335}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

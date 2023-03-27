@@ -20,10 +20,10 @@ namespace InfoCryptocurrenciesTEST.Views
     /// </summary>
     public partial class AllMoney : Page
     {
-        public AllMoneyViewModel AllMoneyViewModel { get; private set; } = new();
+        public ConvertViewModel ConvertViewModel { get; private set; } = new();
         public AllMoney()
         {
-            DataContext = AllMoneyViewModel;
+            DataContext = ConvertViewModel;
             InitializeComponent();
         }
     }

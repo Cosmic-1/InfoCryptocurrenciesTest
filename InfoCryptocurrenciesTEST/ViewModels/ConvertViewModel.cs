@@ -1,4 +1,5 @@
-﻿using InfoCryptocurrenciesTEST.Services;
+﻿using InfoCryptocurrenciesTEST.Commands;
+using InfoCryptocurrenciesTEST.Services;
 using InfoCryptocurrenciesTEST.Services.Coincap;
 using InfoCryptocurrenciesTEST.Views;
 using System;
@@ -6,19 +7,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using System.Windows.Threading;
 
 namespace InfoCryptocurrenciesTEST.ViewModels
 {
-    public class AllMoneyViewModel : ViewModelBase
+    public class ConvertViewModel : ViewModelBase
     {
-        IAllMoney manager;
-        private IEnumerable<Money>? allMoney;
+        IConvertToMoney manager;
+        IEnumerable<Money>? allMoney;
 
-        public AllMoneyViewModel()
+        public ICommand ConvertCommand { get; set; }
+
+        public ConvertViewModel()
         {
             manager = new CoincapManager();
-            Update();
+            ConvertCommand = new ConvertCommand(Update);
         }
 
         public IEnumerable<Money>? AllMoney
@@ -31,11 +35,11 @@ namespace InfoCryptocurrenciesTEST.ViewModels
             }
         }
 
-        public void Update()
+        private void Update(object? parameter)
         {
             Dispatcher.CurrentDispatcher.Invoke(async () =>
             {
-                AllMoney = await manager.GetAllMoneyAsync();
+                AllMoney = await manager.ConvertCryptocurrencyAsync(parameter as string);
             });
         }
     }

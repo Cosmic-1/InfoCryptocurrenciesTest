@@ -18,13 +18,16 @@
         <Menu Grid.Row="0">
             <MenuItem Header="Top" 
                       FontSize="16"
-                      x:Name="TopMenuItem" Click="TopMenuItem_Click"/>
-            <MenuItem Header="Money" 
+                      x:Name="TopMenuItem" 
+                      Click="TopMenuItem_Click"/>
+            <MenuItem Header="Convert" 
                       FontSize="16"
-                      x:Name="MoneyMenuItem" Click="MoneyMenuItem_Click"/>
+                      x:Name="ConvertMenuItem" 
+                      Click="ConvertMenuItem_Click"/>
             <MenuItem Header="Exchanges" 
                       FontSize="16"
-                      x:Name="ExchangesMenuItem" Click="ExchangesMenuItem_Click"/>
+                      x:Name="ExchangesMenuItem" 
+                      Click="ExchangesMenuItem_Click"/>
         </Menu>
 
         <Frame NavigationUIVisibility="Hidden" 
